@@ -4,7 +4,9 @@
   "description": "AngularJS bindings for the admin-lte bootstrap theme.",
   "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp",
+    "start": "lite-server"
   },
   "keywords": [
     "angularjs",
@@ -21,8 +23,11 @@
   "devDependencies": {
     "@types/angular": "^1.6.14",
     "@types/angular-ui-bootstrap": "^0.13.41",
+    "@types/node": "^7.0.12",
+    "brfs": "^1.4.3",
     "browserify": "^14.1.0",
     "gulp": "^3.9.1",
+    "lite-server": "^2.3.0",
     "tsify": "^3.0.1",
     "typescript": "^2.2.2",
     "vinyl-source-stream": "^1.1.0"
