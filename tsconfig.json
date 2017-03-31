@@ -1,0 +1,10 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "target": "es5",
+        "noImplicitAny": true
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}
