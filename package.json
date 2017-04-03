@@ -18,7 +18,9 @@
   "dependencies": {
     "admin-lte": "^2.3.11",
     "angular": "^1.6.3",
-    "angular-ui-bootstrap": "^2.5.0"
+    "angular-animate": "^1.6.3",
+    "angular-ui-bootstrap": "^2.5.0",
+    "font-awesome": "^4.7.0"
   },
   "devDependencies": {
     "@types/angular": "^1.6.14",
