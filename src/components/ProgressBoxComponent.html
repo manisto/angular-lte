@@ -1,0 +1,14 @@
+<div class="info-box" ng-class="'bg-' + $ctrl.type">
+    <span class="info-box-icon">
+        <i class="fa fa-envelope-o" ng-class="'fa-' + $ctrl.icon"></i>
+    </span>
+
+    <div class="info-box-content">
+        <span class="info-box-text">{{$ctrl.text}}</span>
+        <span class="info-box-number">{{$ctrl.number | number}}</span>
+        <div class="progress">
+            <div class="progress-bar" ng-style="{'width': $ctrl.progress + '%'}"></div>
+        </div>
+        <span class="progress-description">{{$ctrl.description}}</span>
+    </div>
+</div>
