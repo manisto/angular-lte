@@ -1,0 +1,12 @@
+<div class="small-box" ng-class="'bg-' + $ctrl.type">
+    <div class="inner">
+        <h3>{{$ctrl.title}}</h3>
+        <p>{{$ctrl.text}}</p>
+    </div>
+    <div class="icon">
+        <i class="fa" ng-class="'fa-' + $ctrl.icon"></i>
+    </div>
+    <a href="#" class="small-box-footer" ng-click="$ctrl.lteClick();">
+        {{$ctrl.linkText}} <i class="fa fa-arrow-circle-right"></i>
+    </a>
+</div>
