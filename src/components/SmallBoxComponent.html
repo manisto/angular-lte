@@ -1,7 +1,7 @@
 <div class="small-box" ng-class="'bg-' + $ctrl.type">
     <div class="inner">
-        <h3>{{$ctrl.title}}</h3>
-        <p>{{$ctrl.text}}</p>
+        <h3 ng-transclude="title">{{$ctrl.title}}</h3>
+        <p ng-transclude="text">{{$ctrl.text}}</p>
     </div>
     <div class="icon">
         <i class="fa" ng-class="'fa-' + $ctrl.icon"></i>

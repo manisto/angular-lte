@@ -9,5 +9,9 @@ export let SmallBoxComponent:ng.IComponentOptions = {
         lteClick: '&',
         linkText: '@'
     },
+    transclude: {
+        title: '?boxTitle',
+        text: '?boxText'
+    },
     template: fs.readFileSync(__dirname + '/SmallBoxComponent.html', 'utf-8')
 };
