@@ -6,10 +6,20 @@ export let SidebarTreeviewToggleDirective: ng.IDirectiveFactory = function() {
         scope: {},
         require: '^^lteSidebarTreeview',
         link: function(scope: ng.IScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes, sidebarTreeviewController: SidebarTreeviewController) {
-            element.on('click', () => {
+            sidebarTreeviewController.toggleElement = element;
+
+            let toggleTreeview = function(event: JQueryEventObject) {
+                event.preventDefault();
+
                 scope.$apply(() => {
                     sidebarTreeviewController.toggle();
                 });
+            };
+
+            element.on('click', toggleTreeview);
+
+            scope.$on('$destroy', () => {
+                element.off('click', toggleTreeview);
             });
         }
     };

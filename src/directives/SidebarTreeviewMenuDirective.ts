@@ -6,9 +6,7 @@ export let SidebarTreeviewMenuDirective: ng.IDirectiveFactory = function() {
         scope: {},
         require: '^^lteSidebarTreeview',
         link: function(scope: ng.IScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes, sidebarTreeviewController: SidebarTreeviewController) {
-            scope.$watch(() => sidebarTreeviewController.expanded, (expanded: boolean) => {
-                element.toggleClass('menu-open', expanded);
-            });
+            sidebarTreeviewController.menuElement = element;
         }
     };
 

@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@types/angular": "^1.6.14",
+    "@types/angular-animate": "^1.5.6",
     "@types/angular-ui-bootstrap": "^0.13.41",
     "@types/node": "^7.0.12",
     "brfs": "^1.4.3",
