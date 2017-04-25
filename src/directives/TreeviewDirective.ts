@@ -22,30 +22,45 @@ export let TreeviewDirective: ng.IDirectiveFactory = function($animateCss: ng.an
         controllerAs: 'vm',
         bindToController: true,
         link: function(scope: ng.IScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes, ctrl: TreeviewController) {
-            ctrl.menuElement.css({
-                display: 'block',
-                overflow: 'hidden',
-                height: '0'
-            });
+            function startAnimation(): void {
+                ctrl.menuElement.css({
+                    display: 'block',
+                    overflow: 'hidden',
+                    height: 'auto'
+                });
+            }
+
+            function endAnimation(): void {
+                ctrl.menuElement.css({
+                    display: '',
+                    overflow: '',
+                    height: ''
+                });
+            }
+
+            function animateHeight(from: string, to: string): ng.animate.IAnimateCssRunner {
+                return $animateCss(ctrl.menuElement, {
+                    duration: DURATION,
+                    easing: 'ease',
+                    from: { height: from },
+                    to: { height: to }
+                });
+            }
 
             function expand() {
                 if (element.hasClass('active')) {
                     return;
                 }
 
-                $animateCss(ctrl.menuElement, {
-                    duration: DURATION,
-                    easing: 'ease',
-                    from: {
-                        height: '0'
-                    },
-                    to: {
-                        height: ctrl.menuElement[0].scrollHeight + 'px'
-                    }
-                }).start().finally(() => {
-                    element.addClass('active');
-                    ctrl.menuElement.addClass('menu-open');
-                });
+                startAnimation();
+
+                animateHeight('0', ctrl.menuElement[0].scrollHeight + 'px')
+                    .start()
+                    .finally(() => {
+                        endAnimation();
+                        element.addClass('active');
+                        ctrl.menuElement.addClass('menu-open');
+                    });
             }
 
             function collapse() {
@@ -53,20 +68,16 @@ export let TreeviewDirective: ng.IDirectiveFactory = function($animateCss: ng.an
                     return;
                 }
 
-                $animateCss(ctrl.menuElement, {
-                    duration: DURATION,
-                    easing: 'ease',
-                    from: {
-                        height: ctrl.menuElement[0].scrollHeight + 'px'
-                    },
-                    to: {
-                        height: '0'
-                    }
-                }).start().finally(() => {
-                    ctrl.menuElement.removeClass('menu-open');
-                });
-
+                startAnimation();
                 element.removeClass('active');
+
+                animateHeight(ctrl.menuElement[0].scrollHeight + 'px', '0')
+                    .start()
+                    .finally(() => {
+                        endAnimation();
+                        ctrl.menuElement.removeClass('menu-open');
+                    });
+
             }
 
             scope.$watch('vm.expanded', (shouldExpand: boolean) => {
