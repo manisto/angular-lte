@@ -1,4 +1,4 @@
-const DURATION: number = .4;
+import {AnimateService} from '../services/AnimateService';
 
 export class TreeviewController implements ng.IController {
     expanded: boolean;
@@ -14,7 +14,7 @@ export class TreeviewController implements ng.IController {
     }
 }
 
-export let TreeviewDirective: ng.IDirectiveFactory = function($animateCss: ng.animate.IAnimateCssService) {
+export let TreeviewDirective: ng.IDirectiveFactory = function(lteAnimateService: AnimateService) {
     let directive: ng.IDirective = {
         restrict: 'A',
         scope: {},
@@ -22,45 +22,12 @@ export let TreeviewDirective: ng.IDirectiveFactory = function($animateCss: ng.an
         controllerAs: 'vm',
         bindToController: true,
         link: function(scope: ng.IScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes, ctrl: TreeviewController) {
-            function startAnimation(): void {
-                ctrl.menuElement.css({
-                    display: 'block',
-                    overflow: 'hidden',
-                    height: 'auto'
-                });
-            }
-
-            function endAnimation(): void {
-                ctrl.menuElement.css({
-                    display: '',
-                    overflow: '',
-                    height: ''
-                });
-            }
-
-            function animateHeight(expand: boolean): ng.IPromise<void> {
-                startAnimation();
-
-                let height = ctrl.menuElement[0].scrollHeight + 'px';
-                let from = expand ? '0' : height;
-                let to = expand ? height: '0';
-
-                return $animateCss(ctrl.menuElement, {
-                    duration: DURATION,
-                    easing: 'ease',
-                    from: { height: from },
-                    to: { height: to }
-                }).start().finally(() => {
-                    endAnimation();
-                });
-            }
-
             function expand() {
                 if (element.hasClass('active')) {
                     return;
                 }
 
-                animateHeight(true)
+                lteAnimateService.expand(ctrl.menuElement)
                     .then(() => {
                         element.addClass('active');
                         ctrl.menuElement.addClass('menu-open');
@@ -74,11 +41,10 @@ export let TreeviewDirective: ng.IDirectiveFactory = function($animateCss: ng.an
 
                 element.removeClass('active');
 
-                animateHeight(false)
+                lteAnimateService.collapse(ctrl.menuElement)
                     .then(() => {
                         ctrl.menuElement.removeClass('menu-open');
                     });
-
             }
 
             scope.$watch('vm.expanded', (shouldExpand: boolean) => {
@@ -96,4 +62,4 @@ export let TreeviewDirective: ng.IDirectiveFactory = function($animateCss: ng.an
     return directive;
 };
 
-TreeviewDirective.$inject = ['$animateCss'];
+TreeviewDirective.$inject = ['lteAnimateService'];
