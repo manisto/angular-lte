@@ -38,12 +38,20 @@ export let TreeviewDirective: ng.IDirectiveFactory = function($animateCss: ng.an
                 });
             }
 
-            function animateHeight(from: string, to: string): ng.animate.IAnimateCssRunner {
+            function animateHeight(expand: boolean): ng.IPromise<void> {
+                startAnimation();
+
+                let height = ctrl.menuElement[0].scrollHeight + 'px';
+                let from = expand ? '0' : height;
+                let to = expand ? height: '0';
+
                 return $animateCss(ctrl.menuElement, {
                     duration: DURATION,
                     easing: 'ease',
                     from: { height: from },
                     to: { height: to }
+                }).start().finally(() => {
+                    endAnimation();
                 });
             }
 
@@ -52,12 +60,8 @@ export let TreeviewDirective: ng.IDirectiveFactory = function($animateCss: ng.an
                     return;
                 }
 
-                startAnimation();
-
-                animateHeight('0', ctrl.menuElement[0].scrollHeight + 'px')
-                    .start()
-                    .finally(() => {
-                        endAnimation();
+                animateHeight(true)
+                    .then(() => {
                         element.addClass('active');
                         ctrl.menuElement.addClass('menu-open');
                     });
@@ -68,13 +72,10 @@ export let TreeviewDirective: ng.IDirectiveFactory = function($animateCss: ng.an
                     return;
                 }
 
-                startAnimation();
                 element.removeClass('active');
 
-                animateHeight(ctrl.menuElement[0].scrollHeight + 'px', '0')
-                    .start()
-                    .finally(() => {
-                        endAnimation();
+                animateHeight(false)
+                    .then(() => {
                         ctrl.menuElement.removeClass('menu-open');
                     });
 
