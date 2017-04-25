@@ -1,6 +1,6 @@
 const DURATION: number = .4;
 
-export class SidebarTreeviewController implements ng.IController {
+export class TreeviewController implements ng.IController {
     expanded: boolean;
     toggleElement: ng.IAugmentedJQuery;
     menuElement: ng.IAugmentedJQuery;
@@ -14,33 +14,38 @@ export class SidebarTreeviewController implements ng.IController {
     }
 }
 
-export let SidebarTreeviewDirective: ng.IDirectiveFactory = function($animateCss: ng.animate.IAnimateCssService) {
+export let TreeviewDirective: ng.IDirectiveFactory = function($animateCss: ng.animate.IAnimateCssService) {
     let directive: ng.IDirective = {
         restrict: 'A',
         scope: {},
-        controller: SidebarTreeviewController,
+        controller: TreeviewController,
         controllerAs: 'vm',
         bindToController: true,
-        link: function(scope: ng.IScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes, ctrl: SidebarTreeviewController) {
+        link: function(scope: ng.IScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes, ctrl: TreeviewController) {
+            ctrl.menuElement.css({
+                display: 'block',
+                overflow: 'hidden',
+                height: '0'
+            });
+
             function expand() {
                 if (element.hasClass('active')) {
                     return;
                 }
 
-                element.addClass('active');
-
                 $animateCss(ctrl.menuElement, {
-                    addClass: 'menu-open',
-                    cleanupStyles: true,
                     duration: DURATION,
+                    easing: 'ease',
                     from: {
-                        overflow: 'hidden',
                         height: '0'
                     },
                     to: {
                         height: ctrl.menuElement[0].scrollHeight + 'px'
                     }
-                }).start();
+                }).start().finally(() => {
+                    element.addClass('active');
+                    ctrl.menuElement.addClass('menu-open');
+                });
             }
 
             function collapse() {
@@ -49,19 +54,19 @@ export let SidebarTreeviewDirective: ng.IDirectiveFactory = function($animateCss
                 }
 
                 $animateCss(ctrl.menuElement, {
-                    removeClass: 'menu-open',
-                    cleanupStyles: true,
                     duration: DURATION,
+                    easing: 'ease',
                     from: {
-                        overflow: 'hidden',
                         height: ctrl.menuElement[0].scrollHeight + 'px'
                     },
                     to: {
                         height: '0'
                     }
                 }).start().finally(() => {
-                    element.removeClass('active');
-                })
+                    ctrl.menuElement.removeClass('menu-open');
+                });
+
+                element.removeClass('active');
             }
 
             scope.$watch('vm.expanded', (shouldExpand: boolean) => {
@@ -79,4 +84,4 @@ export let SidebarTreeviewDirective: ng.IDirectiveFactory = function($animateCss
     return directive;
 };
 
-SidebarTreeviewDirective.$inject = ['$animateCss'];
+TreeviewDirective.$inject = ['$animateCss'];

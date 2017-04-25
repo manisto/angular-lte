@@ -1,8 +1,8 @@
-import {SidebarTreeviewDirective} from './SidebarTreeviewDirective';
-import {SidebarTreeviewToggleDirective} from './SidebarTreeviewToggleDirective';
-import {SidebarTreeviewMenuDirective} from './SidebarTreeviewMenuDirective';
+import {TreeviewDirective} from './TreeviewDirective';
+import {TreeviewToggleDirective} from './TreeviewToggleDirective';
+import {TreeviewMenuDirective} from './TreeviewMenuDirective';
 
 export let directivesModule = angular.module('angular-lte.directives', []);
-directivesModule.directive('lteSidebarTreeview', SidebarTreeviewDirective);
-directivesModule.directive('lteSidebarTreeviewToggle', SidebarTreeviewToggleDirective);
-directivesModule.directive('lteSidebarTreeviewMenu', SidebarTreeviewMenuDirective);
+directivesModule.directive('lteTreeview', TreeviewDirective);
+directivesModule.directive('lteTreeviewToggle', TreeviewToggleDirective);
+directivesModule.directive('lteTreeviewMenu', TreeviewMenuDirective);
