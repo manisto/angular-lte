@@ -6,16 +6,17 @@ export class AnimateService {
     private startAnimation(element: ng.IAugmentedJQuery): void {
         element.css({
             display: 'block',
-            overflow: 'hidden',
-            height: 'auto'
+            overflow: 'hidden'
         });
     }
 
-    private endAnimation(element: ng.IAugmentedJQuery): void {
+    private endAnimation(element: ng.IAugmentedJQuery, expand: boolean): void {
         element.css({
-            display: '',
+            display: expand ? 'block' : 'none',
             overflow: '',
-            height: ''
+            height: '',
+            paddingTop: '',
+            paddingBottom: ''
         });
     }
 
@@ -30,17 +31,30 @@ export class AnimateService {
     private animateHeight(element: ng.IAugmentedJQuery, expand: boolean): ng.IPromise<void> {
         this.startAnimation(element);
 
-        let height = element[0].scrollHeight + 'px';
-        let from = expand ? '0' : height;
-        let to = expand ? height : '0';
+        let style = window.getComputedStyle(element[0]);
+
+        let collapsedSettings = {
+            height: '0',
+            paddingTop: '0',
+            paddingBottom: '0'
+        };
+        
+        let expandedSettings = {
+            height: style.height,
+            paddingTop: style.paddingTop,
+            paddingBottom: style.paddingBottom
+        };
+
+        let from = expand ? collapsedSettings : expandedSettings;
+        let to = expand ? expandedSettings : collapsedSettings;
 
         return this.$animateCss(element, {
             duration: DURATION,
             easing: 'ease',
-            from: { height: from },
-            to: { height: to }
+            from: from,
+            to: to
         }).start().finally(() => {
-            this.endAnimation(element);
+            this.endAnimation(element, expand);
         });
     }
 }
