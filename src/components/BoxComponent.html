@@ -1,0 +1,18 @@
+<div class="box" ng-class="['box-' + $ctrl.type, { 'box-solid': $ctrl.solid }]" lte-box-element>
+    <div class="box-header with-border">
+        <h3 class="box-title">{{ $ctrl.title }}</h3>
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" ng-if="$ctrl.collapsable" ng-click="$ctrl.toggleCollapsed();">
+                <i class="fa" ng-class="{ 'fa-plus': $ctrl.collapsed, 'fa-minus': !$ctrl.collapsed }"></i>
+            </button>
+            <button type="button" class="btn btn-box-tool" ng-if="$ctrl.removable" ng-click="$ctrl.remove();">
+                <i class="fa fa-times"></i>
+            </button>
+        </div>
+    </div>
+    <div class="box-body" ng-transclude lte-box-body-element>
+    </div>
+    <div class="overlay" ng-if="$ctrl.loading">
+        <i class="fa fa-refresh fa-spin"></i>
+    </div>
+</div>
