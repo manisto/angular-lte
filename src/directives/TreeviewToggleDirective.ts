@@ -8,7 +8,7 @@ export let TreeviewToggleDirective: ng.IDirectiveFactory = function() {
         link: function(scope: ng.IScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes, treeviewController: TreeviewController) {
             treeviewController.toggleElement = element;
 
-            let toggleTreeview = function(event: JQueryEventObject) {
+            function toggleTreeview(event: JQueryEventObject) {
                 event.preventDefault();
 
                 scope.$apply(() => {
