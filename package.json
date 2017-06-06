@@ -16,11 +16,14 @@
   "author": "Gert Peter Brigsted <manisto@manisto.dk>",
   "license": "ISC",
   "dependencies": {
-    "admin-lte": "^2.3.11",
+    "admin-lte": "2.3.11",
     "angular": "^1.6.3",
     "angular-animate": "^1.6.3",
     "angular-ui-bootstrap": "^2.5.0",
-    "font-awesome": "^4.7.0"
+    "font-awesome": "^4.7.0",
+    "gulp-clean-css": "^3.4.1",
+    "gulp-less": "^3.3.0",
+    "gulp-rename": "^1.2.2"
   },
   "devDependencies": {
     "@types/angular": "^1.6.14",
