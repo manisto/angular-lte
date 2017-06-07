@@ -1,65 +1,82 @@
 import {AnimateService} from '../services/AnimateService';
 
-export class TreeviewController implements ng.IController {
-    expanded: boolean;
+const ACTIVE_CLASS = 'active';
+
+export class TreeviewController implements ng.IController, ng.IOnChanges {
+    active: boolean;
     toggleElement: ng.IAugmentedJQuery;
     menuElement: ng.IAugmentedJQuery;
+    lteAnimateService: AnimateService;
+    $element: ng.IAugmentedJQuery;
 
-    $onInit() {
-        this.expanded = false;
+    constructor(lteAnimateService: AnimateService, $element: ng.IAugmentedJQuery) {
+        this.lteAnimateService = lteAnimateService;
+        this.$element = $element;
+    }
+
+    $onChanges(changes: ng.IOnChangesObject) {
+        if (changes.active) {
+            let activeChange: ng.IChangesObject<boolean> = changes.active;
+
+            if (activeChange.isFirstChange()) {
+                this.setState(!!activeChange.currentValue);
+                return;
+            }
+
+            this.toggle();
+        }
     }
 
     toggle() {
-        this.expanded = !this.expanded;
+        if (this.active) {
+            this.collapse();
+        } else {
+            this.expand();
+        }
+    }
+
+    expand(): void {
+        if (this.active) {
+            return;
+        }
+
+        this.lteAnimateService.expand(this.menuElement)
+            .then(() => {
+                this.setState(true);
+            });
+    }
+
+    collapse(): void {
+        if (!this.active) {
+            return;
+        }
+
+        this.lteAnimateService.collapse(this.menuElement)
+            .then(() => {
+                this.setState(false);
+            });
+    }
+
+    setState(state: boolean): void {
+        this.active = state;
+        this.$element.toggleClass(ACTIVE_CLASS, state);
     }
 }
 
-export let TreeviewDirective: ng.IDirectiveFactory = function(lteAnimateService: AnimateService) {
+TreeviewController.$inject = ['lteAnimateService', '$element'];
+
+export let TreeviewDirective: ng.IDirectiveFactory = function() {
     let directive: ng.IDirective = {
         restrict: 'A',
         scope: {},
         controller: TreeviewController,
         controllerAs: 'vm',
-        bindToController: true,
-        link: function(scope: ng.IScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes, ctrl: TreeviewController) {
-            function expand() {
-                if (element.hasClass('active')) {
-                    return;
-                }
-
-                lteAnimateService.expand(ctrl.menuElement)
-                    .then(() => {
-                        element.addClass('active');
-                        ctrl.menuElement.addClass('menu-open');
-                    });
-            }
-
-            function collapse() {
-                if (!element.hasClass('active')) {
-                    return;
-                }
-
-                element.removeClass('active');
-
-                lteAnimateService.collapse(ctrl.menuElement)
-                    .then(() => {
-                        ctrl.menuElement.removeClass('menu-open');
-                    });
-            }
-
-            scope.$watch('vm.expanded', (shouldExpand: boolean) => {
-                let settings: ng.animate.IAnimationOptions;
-
-                if (shouldExpand) {
-                    expand();
-                } else {
-                    collapse();
-                }
-            });
+        bindToController: {
+            active: '<'
         }
     };
 
     return directive;
 };
 
-TreeviewDirective.$inject = ['lteAnimateService'];
+TreeviewDirective.$inject = [];
