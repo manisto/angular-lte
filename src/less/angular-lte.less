@@ -16,11 +16,16 @@
         position: relative;
         min-height: auto;
         padding-top: 0;
+
+        .sidebar-mini.sidebar-collapse & {
+            flex-basis: 50px;
+        }
     }
    
     .content-wrapper {
+        margin-left: 0;
         position: relative;
-        padding-bottom: 51px;
+        padding-bottom: 51px; /* Make room for absolutely positioned .main-footer */
         flex: 1 1 auto;
 
     }
@@ -29,9 +34,5 @@
         position: absolute;
         width: 100%;
         bottom: 0;
-    }
-
-    .content-wrapper {
-        margin-left: 0;
     }
 }
