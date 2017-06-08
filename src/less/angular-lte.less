@@ -1,0 +1,37 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    min-height: 100%;
+    padding-top: 50px; /* Make room for absolutely positioned .main-header */
+
+    .main-header {
+        position: absolute;
+        width: 100%;
+        margin-top: -50px; /* Pull up into free space */
+    }
+
+    .main-sidebar {
+        flex: 0 0 230px;
+        position: relative;
+        min-height: auto;
+        padding-top: 0;
+    }
+   
+    .content-wrapper {
+        position: relative;
+        padding-bottom: 51px;
+        flex: 1 1 auto;
+
+    }
+
+    .main-footer {
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+    }
+
+    .content-wrapper {
+        margin-left: 0;
+    }
+}

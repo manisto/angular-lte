@@ -9,7 +9,7 @@ let rename = require('gulp-rename');
 
 const BUILD_DIR = 'dist';
 
-gulp.task('default', [], () => {
+gulp.task('default', ['less'], () => {
     return browserify({
         basedir: '.',
         debug: true,
