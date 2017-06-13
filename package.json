@@ -20,10 +20,7 @@
     "angular": "^1.6.3",
     "angular-animate": "^1.6.3",
     "angular-ui-bootstrap": "^2.5.0",
-    "font-awesome": "^4.7.0",
-    "gulp-clean-css": "^3.4.1",
-    "gulp-less": "^3.3.0",
-    "gulp-rename": "^1.2.2"
+    "font-awesome": "^4.7.0"
   },
   "devDependencies": {
     "@types/angular": "^1.6.14",
@@ -33,9 +30,12 @@
     "brfs": "^1.4.3",
     "browserify": "^14.1.0",
     "gulp": "^3.9.1",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-uglify": "^3.0.0",
     "lite-server": "^2.3.0",
     "tsify": "^3.0.1",
     "typescript": "^2.2.2",
+    "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   }
 }

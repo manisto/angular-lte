@@ -3,13 +3,13 @@ let browserify = require('browserify')
 let source = require('vinyl-source-stream');
 let tsify = require('tsify');
 let brfs = require('brfs');
-let less = require('gulp-less');
-let cleanCss = require('gulp-clean-css');
-let rename = require('gulp-rename');
+let buffer = require('vinyl-buffer');
+let sourcemaps = require('gulp-sourcemaps');
+let uglify = require('gulp-uglify');
 
 const BUILD_DIR = 'dist';
 
-gulp.task('default', ['less'], () => {
+gulp.task('default', [], () => {
     return browserify({
         basedir: '.',
         debug: true,
@@ -20,17 +20,10 @@ gulp.task('default', ['less'], () => {
     .plugin(tsify)
     .transform(brfs)
     .bundle()
-    .pipe(source('angular-lte.js'))
+    .pipe(source('angular-lte.min.js'))
+    .pipe(buffer())
+    .pipe(sourcemaps.init({loadMaps: true}))
+    .pipe(uglify())
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(BUILD_DIR));
-});
-
-gulp.task('less', [], () => {
-    return gulp.src('./src/less/*.less')
-        .pipe(less({}))
-        .pipe(gulp.dest(BUILD_DIR))
-        .pipe(cleanCss())
-        .pipe(rename({
-            suffix: '.min'
-        }))
-        .pipe(gulp.dest(BUILD_DIR));
 });
