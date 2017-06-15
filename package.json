@@ -16,6 +16,7 @@
   "author": "Gert Peter Brigsted <manisto@manisto.dk>",
   "license": "ISC",
   "dependencies": {
+    "@uirouter/angularjs": "^1.0.4",
     "admin-lte": "2.3.11",
     "angular": "^1.6.3",
     "angular-animate": "^1.6.3",
