@@ -3,7 +3,7 @@ import {AnimateService} from '../services/AnimateService';
 const ACTIVE_CLASS = 'active';
 
 export class TreeviewController implements ng.IController, ng.IOnChanges, ng.IOnInit {
-    active: boolean;
+    expanded: boolean = false;
     toggleElement: ng.IAugmentedJQuery;
     menuElement: ng.IAugmentedJQuery;
     parentTreeview: TreeviewController;
@@ -31,16 +31,16 @@ export class TreeviewController implements ng.IController, ng.IOnChanges, ng.IOn
                 return;
             }
 
-            this.toggle();
+            if (activeChange.currentValue) {
+                this.expand();
+            } else {
+                this.collapse();
+            }
         }
     }
 
     toggle() {
-        if (this.parentTreeview) {
-            this.parentTreeview.collapseAllBut(this);
-        }
-
-        if (this.active) {
+        if (this.expanded) {
             this.collapse();
         } else {
             this.expand();
@@ -48,8 +48,12 @@ export class TreeviewController implements ng.IController, ng.IOnChanges, ng.IOn
     }
 
     expand(): void {
-        if (this.active) {
+        if (this.expanded) {
             return;
+        }
+
+        if (this.parentTreeview) {
+            this.parentTreeview.collapseAllBut(this);
         }
 
         this.lteAnimateService.expand(this.menuElement)
@@ -59,7 +63,7 @@ export class TreeviewController implements ng.IController, ng.IOnChanges, ng.IOn
     }
 
     collapse(): void {
-        if (!this.active) {
+        if (!this.expanded) {
             return;
         }
 
@@ -69,9 +73,9 @@ export class TreeviewController implements ng.IController, ng.IOnChanges, ng.IOn
             });
     }
 
-    setState(state: boolean): void {
-        this.active = state;
-        this.$element.toggleClass(ACTIVE_CLASS, state);
+    setState(expanded: boolean): void {
+        this.expanded = expanded;
+        this.$element.toggleClass(ACTIVE_CLASS, expanded);
     }
 
     attachTreeview(treeview: TreeviewController): void {
