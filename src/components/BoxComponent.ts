@@ -1,22 +1,15 @@
 import * as fs from 'fs';
 
-export class BoxController implements ng.IController, ng.IOnChanges {
+export class BoxController implements ng.IController {
     static $inject: string[] = ['$transclude'];
+
+    $transclude: ng.ITranscludeFunction;
     collapsed: boolean;
     removed: boolean;
     onRemoved: () => void;
 
-    constructor(private $transclude: ng.ITranscludeFunction) { }
-
-    $onChanges(changes: ng.IOnChangesObject) {
-        let collapsedChange: ng.IChangesObject<boolean> = changes['collapsed'];
-
-        if (changes['collapsed']) {
-
-            if(collapsedChange.isFirstChange()) {
-                return;
-            }
-        }
+    constructor($transclude: ng.ITranscludeFunction) {
+        this.$transclude = $transclude;
     }
 
     toggleCollapsed() {
