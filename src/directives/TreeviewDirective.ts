@@ -1,19 +1,22 @@
-import {AnimateService} from '../services/AnimateService';
+import {TreeviewMenuController} from './TreeviewMenuDirective';
 
 const ACTIVE_CLASS = 'active';
 
 export class TreeviewController implements ng.IController, ng.IOnChanges, ng.IOnInit {
+    static $inject: string[] = ['$element'];
+
     expanded: boolean = false;
-    toggleElement: ng.IAugmentedJQuery;
-    menuElement: ng.IAugmentedJQuery;
+    menu: TreeviewMenuController;
     parentTreeview: TreeviewController;
     childTreeviews: TreeviewController[] = [];
-    lteAnimateService: AnimateService;
     $element: ng.IAugmentedJQuery;
 
-    constructor(lteAnimateService: AnimateService, $element: ng.IAugmentedJQuery) {
-        this.lteAnimateService = lteAnimateService;
+    constructor($element: ng.IAugmentedJQuery) {
         this.$element = $element;
+    }
+
+    setMenu(menu: TreeviewMenuController): void {
+        this.menu = menu;
     }
 
     $onInit() {
@@ -56,7 +59,7 @@ export class TreeviewController implements ng.IController, ng.IOnChanges, ng.IOn
             this.parentTreeview.collapseAllBut(this);
         }
 
-        this.lteAnimateService.expand(this.menuElement)
+        this.menu.expand()
             .then(() => {
                 this.setState(true);
             });
@@ -67,7 +70,7 @@ export class TreeviewController implements ng.IController, ng.IOnChanges, ng.IOn
             return;
         }
 
-        this.lteAnimateService.collapse(this.menuElement)
+        this.menu.collapse()
             .then(() => {
                 this.setState(false);
             });
@@ -92,8 +95,6 @@ export class TreeviewController implements ng.IController, ng.IOnChanges, ng.IOn
         });
     }
 }
-
-TreeviewController.$inject = ['lteAnimateService', '$element'];
 
 export let TreeviewDirective: ng.IDirectiveFactory = function() {
     let directive: ng.IDirective = {
