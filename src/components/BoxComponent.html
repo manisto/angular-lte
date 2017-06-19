@@ -1,6 +1,6 @@
-<div class="box" ng-class="['box-' + $ctrl.type, { 'box-solid': $ctrl.solid }]" lte-box-element>
+<div class="box" ng-class="['box-' + $ctrl.type, { 'box-solid': $ctrl.solid, 'collapsed-box': $ctrl.collapsed }]" lte-collapse="$ctrl.removed">
     <div class="box-header with-border">
-        <h3 class="box-title">{{ $ctrl.title }}</h3>
+        <h3 class="box-title">{{ $ctrl.header }}</h3>
         <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" ng-if="$ctrl.collapsable" ng-click="$ctrl.toggleCollapsed();">
                 <i class="fa" ng-class="{ 'fa-plus': $ctrl.collapsed, 'fa-minus': !$ctrl.collapsed }"></i>
@@ -10,7 +10,9 @@
             </button>
         </div>
     </div>
-    <div class="box-body" ng-transclude lte-box-body-element>
+    <div class="box-body" ng-transclude="body" lte-collapse="$ctrl.collapsed">
+    </div>
+    <div class="box-footer" ng-transclude="footer" lte-collapse="$ctrl.collapsed" ng-if="$ctrl.$transclude.isSlotFilled('footer')">
     </div>
     <div class="overlay" ng-if="$ctrl.loading">
         <i class="fa fa-refresh fa-spin"></i>

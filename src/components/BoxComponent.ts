@@ -1,57 +1,38 @@
 import * as fs from 'fs';
-import { AnimateService } from '../services/AnimateService';
 
-const COLLAPSED_BOX = 'collapsed-box';
-
-export class BoxController implements ng.IController {
-    private element: ng.IAugmentedJQuery;
-    private bodyElement: ng.IAugmentedJQuery;
+export class BoxController implements ng.IController, ng.IOnChanges {
+    static $inject: string[] = ['$transclude'];
     collapsed: boolean;
-    onRemoved: Function;
+    removed: boolean;
+    onRemoved: () => void;
 
-    constructor(private $element: ng.IAugmentedJQuery, private lteAnimateService: AnimateService) { }
+    constructor(private $transclude: ng.ITranscludeFunction) { }
 
-    setElement(element: ng.IAugmentedJQuery) {
-        this.element = element;
-    }
+    $onChanges(changes: ng.IOnChangesObject) {
+        let collapsedChange: ng.IChangesObject<boolean> = changes['collapsed'];
 
-    setBodyElement(element: ng.IAugmentedJQuery) {
-        this.bodyElement = element;
-    }
+        if (changes['collapsed']) {
 
-    $postLink() {
-        if (this.collapsed) {
-            this.element.addClass(COLLAPSED_BOX);
+            if(collapsedChange.isFirstChange()) {
+                return;
+            }
         }
     }
 
     toggleCollapsed() {
-        if (this.collapsed) {
-            this.lteAnimateService
-                .expand(this.bodyElement)
-                .then(() => { this.element.removeClass(COLLAPSED_BOX); });
-        } else {
-            this.lteAnimateService
-                .collapse(this.bodyElement)
-                .then(() => { this.element.addClass(COLLAPSED_BOX); });
-        }
-
         this.collapsed = !this.collapsed;
     }
 
     remove() {
-        this.lteAnimateService
-            .collapse(this.$element)
-            .then(() => { this.onRemoved(); });
+        this.removed = true;
+        this.onRemoved();
     }
 }
-
-BoxController.$inject = ['$element', 'lteAnimateService'];
 
 export let BoxComponent: ng.IComponentOptions = {
     bindings: {
         type: '@',
-        title: '@',
+        header: '@',
         loading: '<',
         solid: '<',
         collapsable: '<',
@@ -59,7 +40,10 @@ export let BoxComponent: ng.IComponentOptions = {
         removable: '<',
         onRemoved: '&'
     },
-    transclude: true,
+    transclude: {
+        body: 'boxBody',
+        footer: '?boxFooter'
+    },
     template: fs.readFileSync(__dirname + '/BoxComponent.html', 'utf-8'),
     controller: BoxController
 };
