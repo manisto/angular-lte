@@ -23,7 +23,11 @@ gulp.task('default', [], () => {
     .pipe(source('angular-lte.min.js'))
     .pipe(buffer())
     .pipe(sourcemaps.init({loadMaps: true}))
-    .pipe(uglify())
+    .pipe(uglify({
+        compress: {
+            drop_debugger: false
+        }
+    }))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(BUILD_DIR));
 });
