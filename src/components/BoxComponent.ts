@@ -34,6 +34,8 @@ export let BoxComponent: ng.IComponentOptions = {
         onRemoved: '&'
     },
     transclude: {
+        header: '?boxHeader',
+        toolbar: '?boxToolbar',
         body: 'boxBody',
         footer: '?boxFooter'
     },
