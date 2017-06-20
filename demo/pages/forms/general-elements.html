@@ -15,7 +15,7 @@
         <div class="col-md-6">
             <!-- general form elements -->
             <form role="form">
-                <lte-box header="Quick Example" type="primary" collapsable="true">
+                <lte-box header="Quick Example" type="primary">
                     <box-body>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email address</label>
@@ -46,26 +46,19 @@
             <!-- /.box -->
 
             <!-- Form Element sizes -->
-            <div class="box box-success">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Different Height</h3>
-                </div>
-                <div class="box-body">
+            <lte-box header="Different Height" type="success">
+                <box-body>
                     <input class="form-control input-lg" type="text" placeholder=".input-lg">
                     <br>
                     <input class="form-control" type="text" placeholder="Default input">
                     <br>
                     <input class="form-control input-sm" type="text" placeholder=".input-sm">
-                </div>
-                <!-- /.box-body -->
-            </div>
+                </box-body>
+            </lte-box>
             <!-- /.box -->
 
-            <div class="box box-danger">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Different Width</h3>
-                </div>
-                <div class="box-body">
+            <lte-box header="Different Width" type="danger">
+                <box-body>
                     <div class="row">
                         <div class="col-xs-3">
                             <input type="text" class="form-control" placeholder=".col-xs-3">
@@ -77,17 +70,13 @@
                             <input type="text" class="form-control" placeholder=".col-xs-5">
                         </div>
                     </div>
-                </div>
-                <!-- /.box-body -->
-            </div>
+                </box-body>
+            </lte-box>
             <!-- /.box -->
 
             <!-- Input addon -->
-            <div class="box box-info">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Input Addon</h3>
-                </div>
-                <div class="box-body">
+            <lte-box header="Input Addon" type="info">
+                <box-body>
                     <div class="input-group">
                         <span class="input-group-addon">@</span>
                         <input type="text" class="form-control" placeholder="Username">
@@ -185,15 +174,14 @@
                     <p class="margin">Small <code>.input-group.input-group-sm</code></p>
 
                     <div class="input-group input-group-sm">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" />
                         <span class="input-group-btn">
-                      <button type="button" class="btn btn-info btn-flat">Go!</button>
-                    </span>
+                            <button type="button" class="btn btn-info btn-flat">Go!</button>
+                        </span>
                     </div>
                     <!-- /input-group -->
-                </div>
-                <!-- /.box-body -->
-            </div>
+                </box-body>
+            </lte-box>
             <!-- /.box -->
 
         </div>
@@ -201,14 +189,9 @@
         <!-- right column -->
         <div class="col-md-6">
             <!-- Horizontal Form -->
-            <div class="box box-info">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Horizontal Form</h3>
-                </div>
-                <!-- /.box-header -->
-                <!-- form start -->
-                <form class="form-horizontal">
-                    <div class="box-body">
+            <form class="form-horizontal">
+                <lte-box header="Horizontal Form" type="info">
+                    <box-body>
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
 
@@ -227,29 +210,24 @@
                             <div class="col-sm-offset-2 col-sm-10">
                                 <div class="checkbox">
                                     <label>
-                        <input type="checkbox"> Remember me
-                      </label>
+                                        <input type="checkbox"> Remember me
+                                    </label>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- /.box-body -->
-                    <div class="box-footer">
+                    </box-body>
+                    <box-footer>
                         <button type="submit" class="btn btn-default">Cancel</button>
                         <button type="submit" class="btn btn-info pull-right">Sign in</button>
-                    </div>
-                    <!-- /.box-footer -->
-                </form>
-            </div>
+                    </box-footer>
+                </lte-box>
+            </form>
             <!-- /.box -->
             <!-- general form elements disabled -->
-            <div class="box box-warning">
-                <div class="box-header with-border">
-                    <h3 class="box-title">General Elements</h3>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <form role="form">
+            <form role="form">
+                <lte-box header="General Elements" type="warning">
+                    <!-- /.box-header -->
+                    <box-body>
                         <!-- text input -->
                         <div class="form-group">
                             <label>Text</label>
@@ -277,15 +255,13 @@
                             <span class="help-block">Help block with success</span>
                         </div>
                         <div class="form-group has-warning">
-                            <label class="control-label" for="inputWarning"><i class="fa fa-bell-o"></i> Input with
-                    warning</label>
-                            <input type="text" class="form-control" id="inputWarning" placeholder="Enter ...">
+                            <label class="control-label" for="inputWarning"><i class="fa fa-bell-o"></i> Input with warning</label>
+                            <input type="text" class="form-control" id="inputWarning" placeholder="Enter ..." />
                             <span class="help-block">Help block with warning</span>
                         </div>
                         <div class="form-group has-error">
-                            <label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> Input with
-                    error</label>
-                            <input type="text" class="form-control" id="inputError" placeholder="Enter ...">
+                            <label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> Input with error</label>
+                            <input type="text" class="form-control" id="inputError" placeholder="Enter ..." />
                             <span class="help-block">Help block with error</span>
                         </div>
 
@@ -293,23 +269,23 @@
                         <div class="form-group">
                             <div class="checkbox">
                                 <label>
-                      <input type="checkbox">
-                      Checkbox 1
-                    </label>
+                                    <input type="checkbox" />
+                                    Checkbox 1
+                                </label>
                             </div>
 
                             <div class="checkbox">
                                 <label>
-                      <input type="checkbox">
-                      Checkbox 2
-                    </label>
+                                    <input type="checkbox" />
+                                    Checkbox 2
+                                </label>
                             </div>
 
                             <div class="checkbox">
                                 <label>
-                      <input type="checkbox" disabled="">
-                      Checkbox disabled
-                    </label>
+                                    <input type="checkbox" disabled="" />
+                                    Checkbox disabled
+                                </label>
                             </div>
                         </div>
 
@@ -317,21 +293,21 @@
                         <div class="form-group">
                             <div class="radio">
                                 <label>
-                      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-                      Option one is this and that—be sure to include why it's great
-                    </label>
+                                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="" />
+                                    Option one is this and that—be sure to include why it's great
+                                </label>
                             </div>
                             <div class="radio">
                                 <label>
-                      <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                      Option two can be something else and selecting it will deselect option one
-                    </label>
+                                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" />
+                                    Option two can be something else and selecting it will deselect option one
+                                </label>
                             </div>
                             <div class="radio">
                                 <label>
-                      <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled="">
-                      Option three is disabled
-                    </label>
+                                    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled="" />
+                                    Option three is disabled
+                                </label>
                             </div>
                         </div>
 
@@ -339,50 +315,50 @@
                         <div class="form-group">
                             <label>Select</label>
                             <select class="form-control">
-                    <option>option 1</option>
-                    <option>option 2</option>
-                    <option>option 3</option>
-                    <option>option 4</option>
-                    <option>option 5</option>
-                  </select>
+                                <option>option 1</option>
+                                <option>option 2</option>
+                                <option>option 3</option>
+                                <option>option 4</option>
+                                <option>option 5</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label>Select Disabled</label>
                             <select class="form-control" disabled="">
-                    <option>option 1</option>
-                    <option>option 2</option>
-                    <option>option 3</option>
-                    <option>option 4</option>
-                    <option>option 5</option>
-                  </select>
+                                <option>option 1</option>
+                                <option>option 2</option>
+                                <option>option 3</option>
+                                <option>option 4</option>
+                                <option>option 5</option>
+                            </select>
                         </div>
 
                         <!-- Select multiple-->
                         <div class="form-group">
                             <label>Select Multiple</label>
                             <select multiple="" class="form-control">
-                    <option>option 1</option>
-                    <option>option 2</option>
-                    <option>option 3</option>
-                    <option>option 4</option>
-                    <option>option 5</option>
-                  </select>
+                                <option>option 1</option>
+                                <option>option 2</option>
+                                <option>option 3</option>
+                                <option>option 4</option>
+                                <option>option 5</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label>Select Multiple Disabled</label>
                             <select multiple="" class="form-control" disabled="">
-                    <option>option 1</option>
-                    <option>option 2</option>
-                    <option>option 3</option>
-                    <option>option 4</option>
-                    <option>option 5</option>
-                  </select>
+                                <option>option 1</option>
+                                <option>option 2</option>
+                                <option>option 3</option>
+                                <option>option 4</option>
+                                <option>option 5</option>
+                            </select>
                         </div>
 
-                    </form>
-                </div>
-                <!-- /.box-body -->
-            </div>
+                    </box-body>
+                    <!-- /.box-body -->
+                </lte-box>
+                </form>
             <!-- /.box -->
         </div>
         <!--/.col (right) -->
