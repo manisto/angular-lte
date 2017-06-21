@@ -28,6 +28,16 @@ demoModule.config(($stateProvider, $urlServiceProvider) => {
         url: '/general-elements',
         component: 'formsGeneralElements'
     });
+
+    $stateProvider.state('tables', {
+        url: '/tables',
+        abstract: true
+    });
+
+    $stateProvider.state('tables.simple-tables', {
+        url: '/simple-tables',
+        component: 'tablesSimpleTables'
+    });
 });
 
 demoModule.component('sidebar', {
@@ -43,4 +53,8 @@ demoModule.component('dashboardV1', {
 
 demoModule.component('formsGeneralElements', {
     templateUrl: '/pages/forms/general-elements.html'
+});
+
+demoModule.component('tablesSimpleTables', {
+    templateUrl: '/pages/tables/simple-tables.html'
 });

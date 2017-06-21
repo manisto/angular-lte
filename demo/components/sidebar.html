@@ -101,7 +101,7 @@
                 <li ui-sref-active="active"><a ui-sref="forms.editors"><i class="fa fa-circle-o"></i> Editors</a></li>
             </ul>
         </li>
-        <li class="treeview" lte-treeview>
+        <li class="treeview" lte-treeview active="$ctrl.$state.includes('tables')">
             <a href="#" lte-treeview-toggle>
                 <i class="fa fa-table"></i> <span>Tables</span>
                 <span class="pull-right-container">
@@ -109,8 +109,8 @@
                 </span>
             </a>
             <ul class="treeview-menu" lte-treeview-menu>
-                <li><a href="../tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
-                <li><a href="../tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
+                <li ui-sref-active="active"><a ui-sref="tables.simple-tables"><i class="fa fa-circle-o"></i> Simple tables</a></li>
+                <li ui-sref-active="active"><a ui-sref="tables.data-tables"><i class="fa fa-circle-o"></i> Data tables</a></li>
             </ul>
         </li>
         <li>
