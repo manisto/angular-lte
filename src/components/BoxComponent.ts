@@ -24,6 +24,7 @@ export class BoxController implements ng.IController {
 
 export let BoxComponent: ng.IComponentOptions = {
     bindings: {
+        fullWidth: '<',
         type: '@',
         header: '@',
         loading: '<',

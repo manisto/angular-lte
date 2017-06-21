@@ -11,7 +11,7 @@
             </button>
         </div>
     </div>
-    <div class="box-body" ng-transclude="body" lte-collapse="$ctrl.collapsed">
+    <div class="box-body" ng-class="{ 'no-padding': $ctrl.fullWidth }" ng-transclude="body" lte-collapse="$ctrl.collapsed">
     </div>
     <div class="box-footer" ng-transclude="footer" lte-collapse="$ctrl.collapsed" ng-if="$ctrl.$transclude.isSlotFilled('footer')">
     </div>
