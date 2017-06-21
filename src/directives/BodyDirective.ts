@@ -1,4 +1,5 @@
-const collapsedClass = 'sidebar-collapse';
+const sidebarCollapseClass = 'sidebar-collapse';
+const sidebarOpenClass = 'sidebar-open';
 
 export class BodyController implements ng.IController {
     static $inject: string[] = ['$element'];
@@ -13,7 +14,8 @@ export class BodyController implements ng.IController {
 
     toggleSidebar(): void {
         this.sidebarCollapsed = !this.sidebarCollapsed;
-        this.$element.toggleClass(collapsedClass, this.sidebarCollapsed);
+        this.$element.toggleClass(sidebarCollapseClass, this.sidebarCollapsed);
+        this.$element.toggleClass(sidebarOpenClass, !this.sidebarCollapsed);
     }
 }
 
