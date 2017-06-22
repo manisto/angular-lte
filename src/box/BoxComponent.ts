@@ -6,13 +6,23 @@ export class BoxController implements ng.IController {
     collapsed: boolean;
     removed: boolean;
     onRemoved: () => void;
+    toolbarElement: JQuery;
     headerElement: JQuery;
+    footerElement: JQuery;
 
     constructor() {
     }
 
+    setToolbarElement(toolbarElement: JQuery): void {
+        this.toolbarElement = toolbarElement;
+    }
+
     setHeaderElement(headerElement: JQuery): void {
         this.headerElement = headerElement;
+    }
+
+    setFooterElement(footerElement: JQuery): void {
+        this.footerElement = footerElement;
     }
 
     toggleCollapsed() {
