@@ -1,15 +1,18 @@
 import * as fs from 'fs';
 
 export class BoxController implements ng.IController {
-    static $inject: string[] = ['$transclude'];
+    static $inject: string[] = [];
 
-    $transclude: ng.ITranscludeFunction;
     collapsed: boolean;
     removed: boolean;
     onRemoved: () => void;
+    headerElement: JQuery;
 
-    constructor($transclude: ng.ITranscludeFunction) {
-        this.$transclude = $transclude;
+    constructor() {
+    }
+
+    setHeaderElement(headerElement: JQuery): void {
+        this.headerElement = headerElement;
     }
 
     toggleCollapsed() {
@@ -29,17 +32,13 @@ export let BoxComponent: ng.IComponentOptions = {
         header: '@',
         loading: '<',
         solid: '<',
+        skipHeaderBorder: '<',
         collapsable: '<',
         collapsed: '<',
         removable: '<',
         onRemoved: '&'
     },
-    transclude: {
-        header: '?boxHeader',
-        toolbar: '?boxToolbar',
-        body: 'boxBody',
-        footer: '?boxFooter'
-    },
+    transclude: true,
     template: fs.readFileSync(__dirname + '/BoxComponent.html', 'utf-8'),
     controller: BoxController
 };
