@@ -3,7 +3,15 @@ import * as fs from 'fs';
 export class BoxController implements ng.IController {
     static $inject: string[] = [];
 
-    collapsed: boolean;
+    fullWidth: boolean = false;
+    type: string = 'default';
+    header: string = '';
+    loading: boolean = false;
+    solid: boolean = false;
+    skipHeaderBorder: boolean = false;
+    collapsable: boolean = false;
+    collapsed: boolean = false;
+    removable: boolean = false;
     removed: boolean;
     onRemoved: () => void;
     toolbarElement: JQuery;
