@@ -5,7 +5,7 @@ export let BoxToolbarDirective: ng.IDirectiveFactory = function() {
         transclude: 'element',
         require: '^^lteBox',
         link: function($scope, $element, $attributes, boxController: BoxController, $transclude: ng.ITranscludeFunction) {
-            boxController.setToolbarElement($transclude());
+            boxController.setToolbarElement($transclude($scope, angular.noop));
         }
     };
 

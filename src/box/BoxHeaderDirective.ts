@@ -5,7 +5,7 @@ export let BoxHeaderDirective: ng.IDirectiveFactory = function() {
         transclude: 'element',
         require: '^^lteBox',
         link: function($scope, $element, $attributes, boxController: BoxController, $transclude: ng.ITranscludeFunction) {
-            boxController.setHeaderElement($transclude());
+            boxController.setHeaderElement($transclude($scope, angular.noop));
         }
     };
 
