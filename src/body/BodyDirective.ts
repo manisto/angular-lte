@@ -22,10 +22,7 @@ export class BodyController implements ng.IController {
 export let BodyDirective: ng.IDirectiveFactory = function() {
     let directive: ng.IDirective = {
         restrict: 'A',
-        scope: {},
-        require: {},
         controller: BodyController,
-        controllerAs: 'vm',
         bindToController: {}
     };
 
