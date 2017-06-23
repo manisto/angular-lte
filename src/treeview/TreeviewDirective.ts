@@ -104,7 +104,6 @@ export let TreeviewDirective: ng.IDirectiveFactory = function() {
             parentTreeview: '?^^lteTreeview'
         },
         controller: TreeviewController,
-        controllerAs: 'vm',
         bindToController: {
             active: '<'
         }
