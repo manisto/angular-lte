@@ -59,6 +59,10 @@ export class TreeviewController implements ng.IController, ng.IOnChanges, ng.IOn
             this.parentTreeview.collapseAllBut(this);
         }
 
+        if (!this.menu) {
+            return;
+        }
+
         this.menu.expand()
             .then(() => {
                 this.setState(true);
@@ -67,6 +71,10 @@ export class TreeviewController implements ng.IController, ng.IOnChanges, ng.IOn
 
     collapse(): void {
         if (!this.expanded) {
+            return;
+        }
+
+        if (!this.menu) {
             return;
         }
 

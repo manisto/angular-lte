@@ -1,9 +1,22 @@
+import * as fs from 'fs';
 import {TreeviewController} from './TreeviewDirective';
+
+class TreeviewToggleController {
+
+}
 
 export let TreeviewToggleDirective: ng.IDirectiveFactory = function() {
     let directive: ng.IDirective = {
         restrict: 'A',
         scope: {},
+        transclude: true,
+        template: fs.readFileSync(__dirname + '/TreeviewToggleDirective.html', 'utf-8'),
+        controller: TreeviewToggleController,
+        controllerAs: '$ctrl',
+        bindToController: {
+            icon: '@',
+            header: '@'
+        },
         require: '^^lteTreeview',
         link: function(scope: ng.IScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes, treeviewController: TreeviewController) {
             function toggleTreeview(event: JQueryEventObject) {
