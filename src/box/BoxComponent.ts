@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 
-export class BoxController implements ng.IController {
+export class BoxController implements ng.IController, ng.IOnChanges {
     static $inject: string[] = [];
 
     fullWidth: boolean = false;
@@ -19,6 +19,12 @@ export class BoxController implements ng.IController {
     footerElement: JQuery;
 
     constructor() {
+    }
+
+    $onChanges(changes: ng.IOnChangesObject) {
+        if (changes['type']) {
+            this.type = this.type || 'default';
+        }
     }
 
     setToolbarElement(toolbarElement: JQuery): void {
