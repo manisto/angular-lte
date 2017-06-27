@@ -6,6 +6,8 @@ import {wrapperModule} from './wrapper/wrapper.module';
 import {componentsModule} from './components/components.module';
 import {collapseModule} from './collapse/collapse.module';
 
+import {Options} from './Options';
+
 export let angularLteModule = angular.module('angular-lte', [
     boxModule.name,
     bodyModule.name,
@@ -15,3 +17,5 @@ export let angularLteModule = angular.module('angular-lte', [
     componentsModule.name,
     collapseModule.name,
 ]);
+
+angularLteModule.constant('lteOptions', Options);
