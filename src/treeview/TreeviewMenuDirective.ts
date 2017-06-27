@@ -1,5 +1,5 @@
 import {TreeviewController} from './TreeviewDirective';
-import {CollapseController} from '../directives/CollapseDirective';
+import {CollapseController} from '../collapse/CollapseDirective';
 
 export class TreeviewMenuController extends CollapseController implements ng.IOnInit {
     static $inject = ['$element', '$animateCss'];

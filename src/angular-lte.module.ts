@@ -4,7 +4,7 @@ import {treeviewModule} from './treeview/treeview.module';
 import {sidebarToggleModule} from './sidebar-toggle/sidebar-toggle.module';
 import {wrapperModule} from './wrapper/wrapper.module';
 import {componentsModule} from './components/components.module';
-import {directivesModule} from './directives/directives.module';
+import {collapseModule} from './collapse/collapse.module';
 
 export let angularLteModule = angular.module('angular-lte', [
     boxModule.name,
@@ -13,5 +13,5 @@ export let angularLteModule = angular.module('angular-lte', [
     sidebarToggleModule.name,
     wrapperModule.name,
     componentsModule.name,
-    directivesModule.name,
+    collapseModule.name,
 ]);
