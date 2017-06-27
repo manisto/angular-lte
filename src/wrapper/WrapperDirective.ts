@@ -8,10 +8,10 @@ export let WrapperDirective: ng.IDirectiveFactory = function ($window: ng.IWindo
             let running = false;
             let window = angular.element($window);
             let wrapper: HTMLElement = element[0];
-            let mainHeader: HTMLElement = <HTMLElement>wrapper.children[0];
-            let mainSidebar: HTMLElement = <HTMLElement>wrapper.children[1];
-            let contentWrapper: HTMLElement = <HTMLElement>wrapper.children[2];
-            let mainFooter: HTMLElement = <HTMLElement>wrapper.children[3];
+            let mainHeader: HTMLElement = wrapper.querySelector('.main-header') as HTMLElement;
+            let mainSidebar: HTMLElement = wrapper.querySelector('.main-sidebar') as HTMLElement;
+            let contentWrapper: HTMLElement = wrapper.querySelector('.content-wrapper') as HTMLElement;
+            let mainFooter: HTMLElement = wrapper.querySelector('.main-footer') as HTMLElement;
 
             let watches: any[] = [];
             watches.push(() => wrapper.offsetHeight);
