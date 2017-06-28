@@ -6,7 +6,6 @@ export let ContentWrapperDirective: ng.IDirectiveFactory = function() {
         scope: {},
         require: '^^lteBody',
         link: function($scope, $element, attributes, body: BodyController) {
-            debugger;
             function handleClick() {
                 body.contentClicked();
             }
