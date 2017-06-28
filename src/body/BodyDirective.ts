@@ -1,21 +1,39 @@
+import {IOptions} from '../Options';
+
 const sidebarCollapseClass = 'sidebar-collapse';
 const sidebarOpenClass = 'sidebar-open';
 
 export class BodyController implements ng.IController {
-    static $inject: string[] = ['$element'];
+    static $inject: string[] = ['$window', '$element', 'lteOptions'];
 
+    $window: ng.IWindowService;
     $element: ng.IAugmentedJQuery;
+    options: IOptions;
 
-    sidebarCollapsed: boolean = false;
-
-    constructor($element: ng.IAugmentedJQuery) {
+    constructor($window: ng.IWindowService, $element: ng.IAugmentedJQuery, lteOptions: IOptions) {
+        this.$window = $window;
         this.$element = $element;
+        this.options = lteOptions;
     }
 
     toggleSidebar(): void {
-        this.sidebarCollapsed = !this.sidebarCollapsed;
-        this.$element.toggleClass(sidebarCollapseClass, this.sidebarCollapsed);
-        this.$element.toggleClass(sidebarOpenClass, !this.sidebarCollapsed);
+        if (this.isSmall()) {
+            this.$element.removeClass(sidebarCollapseClass);
+            this.$element.toggleClass(sidebarOpenClass);
+        } else {
+            this.$element.removeClass(sidebarOpenClass);
+            this.$element.toggleClass(sidebarCollapseClass);
+        }
+    }
+
+    private isSmall(): boolean {
+        return this.$window.innerWidth < this.options.screenSizes.sm;
+    }
+
+    contentClicked(): void {
+        if (this.isSmall()) {
+            this.$element.removeClass(sidebarOpenClass);
+        }
     }
 }
 

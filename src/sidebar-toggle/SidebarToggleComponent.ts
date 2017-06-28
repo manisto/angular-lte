@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import { BodyController } from '../body/BodyDirective';
+import { BodyController } from './BodyDirective';
 
 const sidebarCollapseClass = 'sidebar-collapse';
 const sidebarOpenClass = 'sidebar-open';
