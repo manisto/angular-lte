@@ -32,6 +32,9 @@ The **box component** wraps the box widget from AdminLTE.
 - `on-removed`
   _(Default: `angular.noop`)_ -
   Callback that is invoked when the box is removed.
+- `on-toggle-collapsed`
+  _(Default: `angular.noop`)_ -
+  Callback that is invoked when the box is expanded or collapsed. The event has one parameter, `collapsed`.
 
 ### Box toolbar, header & footer
 
@@ -51,7 +54,7 @@ All other content of the box will be transcluded into the body.
 ### Example
 
 ```html
-<lte-box collapsable="true" full-width="true" skip-header-border="true">
+<lte-box collapsable="true" full-width="true" skip-header-border="true" on-toggle-collapsed="$ctrl.boxCollapsed = $event.collapsed;">
   <lte-box-toolbar>
     <span class="badge">7</span>
   </lte-box-toolbar>

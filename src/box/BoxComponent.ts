@@ -1,5 +1,11 @@
 import * as fs from 'fs';
 
+export interface ToggleCollapsedEvent {
+    $event: {
+        collapsed: boolean;
+    }
+}
+
 export class BoxController implements ng.IController, ng.IOnChanges {
     static $inject: string[] = [];
 
@@ -14,6 +20,7 @@ export class BoxController implements ng.IController, ng.IOnChanges {
     removable: boolean = false;
     removed: boolean;
     onRemoved: () => void;
+    onToggleCollapsed: ($event: ToggleCollapsedEvent) => void;
     toolbarElement: JQuery;
     headerElement: JQuery;
     footerElement: JQuery;
@@ -41,6 +48,11 @@ export class BoxController implements ng.IController, ng.IOnChanges {
 
     toggleCollapsed() {
         this.collapsed = !this.collapsed;
+        this.onToggleCollapsed({
+            $event: {
+                collapsed: this.collapsed
+            }
+        });
     }
 
     remove() {
@@ -59,6 +71,7 @@ export let BoxComponent: ng.IComponentOptions = {
         skipHeaderBorder: '<',
         collapsable: '<',
         collapsed: '<',
+        onToggleCollapsed: '&',
         removable: '<',
         onRemoved: '&'
     },
