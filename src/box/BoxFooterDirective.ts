@@ -6,6 +6,10 @@ export let BoxFooterDirective: ng.IDirectiveFactory = function() {
         require: '^^lteBox',
         link: function($scope, $element, $attributes, boxController: BoxController, $transclude: ng.ITranscludeFunction) {
             boxController.setFooterElement($transclude($scope, angular.noop));
+
+            $scope.$on('$destroy', () => {
+                boxController.setFooterElement(null);
+            });
         }
     };
 

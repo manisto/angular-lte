@@ -5,11 +5,12 @@ export let BoxFooterContainerDirective: ng.IDirectiveFactory = function() {
         require: '^^lteBox',
         link: function($scope, $element, $attribute, boxController: BoxController) {
             $scope.$watch(() => boxController.footerElement, (footerElement: JQuery) => {
+                $element.empty();
+                
                 if (!footerElement) {
                     return;
                 }
 
-                $element.empty();
                 $element.append(footerElement);
             });
         }
