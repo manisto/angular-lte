@@ -43,7 +43,7 @@ export class TreeviewController implements ng.IController, ng.IOnChanges, ng.IOn
     }
 
     toggle() {
-        if (this.expanded) {
+        if (this.expanded && this.menu) {
             this.collapse();
         } else {
             this.expand();
@@ -60,6 +60,7 @@ export class TreeviewController implements ng.IController, ng.IOnChanges, ng.IOn
         }
 
         if (!this.menu) {
+            this.setState(true);
             return;
         }
 
@@ -75,6 +76,7 @@ export class TreeviewController implements ng.IController, ng.IOnChanges, ng.IOn
         }
 
         if (!this.menu) {
+            this.setState(false);
             return;
         }
 

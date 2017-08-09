@@ -19,6 +19,11 @@ demoModule.config(($stateProvider, $urlServiceProvider) => {
         component: 'dashboardV1'
     });
 
+    $stateProvider.state('widgets', {
+        url: '/widgets',
+        component: 'widgets'
+    });
+
     $stateProvider.state('forms', {
         url: '/forms',
         abstract: true
@@ -49,6 +54,10 @@ demoModule.component('sidebar', {
 
 demoModule.component('dashboardV1', {
     templateUrl: '/pages/dashboard/dashboard-v1.html'
+});
+
+demoModule.component('widgets', {
+    templateUrl: '/pages/widgets.html'
 });
 
 demoModule.component('formsGeneralElements', {

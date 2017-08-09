@@ -21,7 +21,7 @@
     <ul class="sidebar-menu" lte-treeview>
         <li class="header">MAIN NAVIGATION</li>
         <li class="treeview" lte-treeview active="$ctrl.$state.includes('dashboard')">
-            <a href="#" lte-treeview-toggle icon="fa fa-dashboard" header="Dashboard">
+            <a lte-treeview-toggle icon="fa fa-dashboard" header="Dashboard">
             </a>
             <ul class="treeview-menu" lte-treeview-menu>
                 <li ui-sref-active="active"><a ui-sref="dashboard.v1"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
@@ -29,7 +29,7 @@
             </ul>
         </li>
         <li class="treeview" lte-treeview>
-            <a href="#" lte-treeview-toggle icon="fa fa-files-o" header="Layout Options">
+            <a lte-treeview-toggle icon="fa fa-files-o" header="Layout Options">
                 <span class="label label-primary pull-right">4</span>
             </a>
             <ul class="treeview-menu" lte-treeview-menu>
@@ -39,13 +39,13 @@
                 <li><a href="../layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
             </ul>
         </li>
-        <li class="treeview" lte-treeview>
-            <a href="../widgets.html" lte-treeview-toggle icon="fa fa-th" header="Widgets">
+        <li class="treeview" lte-treeview active="$ctrl.$state.includes('widgets')">
+            <a ui-sref="widgets" lte-treeview-toggle icon="fa fa-th" header="Widgets">
                 <small class="label pull-right bg-green">new</small>
             </a>
         </li>
         <li class="treeview" lte-treeview>
-            <a href="#" lte-treeview-toggle icon="fa fa-pie-chart" header="Charts">
+            <a lte-treeview-toggle icon="fa fa-pie-chart" header="Charts">
             </a>
             <ul class="treeview-menu" lte-treeview-menu>
                 <li><a href="../charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
@@ -55,7 +55,7 @@
             </ul>
         </li>
         <li class="treeview" lte-treeview>
-            <a href="#" lte-treeview-toggle icon="fa fa-laptop" header="UI Elements">
+            <a lte-treeview-toggle icon="fa fa-laptop" header="UI Elements">
             </a>
             <ul class="treeview-menu" lte-treeview-menu>
                 <li><a href="general.html"><i class="fa fa-circle-o"></i> General</a></li>
@@ -67,7 +67,7 @@
             </ul>
         </li>
         <li class="treeview" lte-treeview active="$ctrl.$state.includes('forms')">
-            <a href="#" lte-treeview-toggle icon="fa fa-edit" header="Forms">
+            <a lte-treeview-toggle icon="fa fa-edit" header="Forms">
             </a>
             <ul class="treeview-menu" lte-treeview-menu>
                 <li ui-sref-active="active"><a ui-sref="forms.general-elements"><i class="fa fa-circle-o"></i> General Elements</a></li>
@@ -76,7 +76,7 @@
             </ul>
         </li>
         <li class="treeview" lte-treeview active="$ctrl.$state.includes('tables')">
-            <a href="#" lte-treeview-toggle icon="fa fa-table" header="Tables">
+            <a lte-treeview-toggle icon="fa fa-table" header="Tables">
             </a>
             <ul class="treeview-menu" lte-treeview-menu>
                 <li ui-sref-active="active"><a ui-sref="tables.simple-tables"><i class="fa fa-circle-o"></i> Simple tables</a></li>
@@ -84,20 +84,20 @@
             </ul>
         </li>
         <li class="treeview" lte-treeview>
-            <a href="../calendar.html" lte-treeview-toggle icon="fa fa-calendar" header="Calendar">
+            <a lte-treeview-toggle icon="fa fa-calendar" header="Calendar">
                 <small class="label pull-right bg-red">3</small>
                 <small class="label pull-right bg-blue">17</small>
             </a>
         </li>
         <li class="treeview" lte-treeview>
-            <a href="../mailbox/mailbox.html" lte-treeview-toggle icon="fa fa-envelope" header="Mailbox">
+            <a lte-treeview-toggle icon="fa fa-envelope" header="Mailbox">
                 <small class="label pull-right bg-yellow">12</small>
                 <small class="label pull-right bg-green">16</small>
                 <small class="label pull-right bg-red">5</small>
             </a>
         </li>
         <li class="treeview" lte-treeview>
-            <a href="#" lte-treeview-toggle icon="fa fa-folder" header="Examples">
+            <a lte-treeview-toggle icon="fa fa-folder" header="Examples">
             </a>
             <ul class="treeview-menu" lte-treeview-menu>
                 <li><a href="../examples/invoice.html"><i class="fa fa-circle-o"></i> Invoice</a></li>
@@ -112,17 +112,17 @@
             </ul>
         </li>
         <li class="treeview" lte-treeview>
-            <a href="#" lte-treeview-toggle icon="fa fa-share" header="Multilevel">
+            <a lte-treeview-toggle icon="fa fa-share" header="Multilevel">
             </a>
             <ul class="treeview-menu" lte-treeview-menu>
                 <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
                 <li lte-treeview>
-                    <a href="#" lte-treeview-toggle icon="fa fa-circle-o" header="Level One">
+                    <a lte-treeview-toggle icon="fa fa-circle-o" header="Level One">
                     </a>
                     <ul class="treeview-menu" lte-treeview-menu>
                         <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
                         <li lte-treeview>
-                            <a href="#" lte-treeview-toggle icon="fa fa-circle-o" header="Level Two">
+                            <a lte-treeview-toggle icon="fa fa-circle-o" header="Level Two">
                             </a>
                             <ul class="treeview-menu" lte-treeview-menu>
                                 <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
@@ -135,17 +135,17 @@
             </ul>
         </li>
         <li class="treeview" lte-treeview>
-            <a href="../../documentation/index.html" lte-treeview-toggle icon="fa fa-book" header="Documentation">&shy;</a>
+            <a lte-treeview-toggle icon="fa fa-book" header="Documentation">&shy;</a>
         </li>
         <li class="header">LABELS</li>
         <li class="treeview">
-            <a href="#" lte-treeview-toggle icon="fa fa-circle-o text-red" header="Important">&shy;</a>
+            <a lte-treeview-toggle icon="fa fa-circle-o text-red" header="Important">&shy;</a>
         </li>
         <li class="treeview">
-            <a href="#" lte-treeview-toggle icon="fa fa-circle-o text-yellow" header="Warning">&shy;</a>
+            <a lte-treeview-toggle icon="fa fa-circle-o text-yellow" header="Warning">&shy;</a>
         </li>
         <li class="treeview">
-            <a href="#" lte-treeview-toggle icon="fa fa-circle-o text-aqua" header="Information">&shy;</a>
+            <a lte-treeview-toggle icon="fa fa-circle-o text-aqua" header="Information">&shy;</a>
         </li>
     </ul>
 </section>
