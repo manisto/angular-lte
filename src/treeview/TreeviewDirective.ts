@@ -1,5 +1,4 @@
 import {TreeviewMenuController} from './TreeviewMenuDirective';
-import {BodyController} from '../sidebar-toggle/BodyDirective';
 
 const ACTIVE_CLASS = 'active';
 
@@ -9,7 +8,6 @@ export class TreeviewController implements ng.IController, ng.IOnChanges, ng.IOn
     expanded: boolean = false;
     menu: TreeviewMenuController;
     parentTreeview: TreeviewController;
-    body: BodyController;
     childTreeviews: TreeviewController[] = [];
     $element: ng.IAugmentedJQuery;
 
@@ -50,10 +48,6 @@ export class TreeviewController implements ng.IController, ng.IOnChanges, ng.IOn
         } else {
             this.expand();
         }
-    }
-
-    navigate(): void {
-        this.body.contentClicked();
     }
 
     expand(): void {
