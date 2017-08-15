@@ -3,11 +3,11 @@ The **lte-treeview directive** handles the left navigation menu by controlling w
 ### lte-treeview
 
 The `lte-treeview` directives serves as a container for the menu item structure.
-Both the `lte-treeview-toggle` and the `lte-treeview-menu` directives register themselves with the nearest `lte-treeview`.
+Both the `lte-treeview-title` and the `lte-treeview-menu` directives register themselves with the nearest `lte-treeview`.
 The directive only has one setting, `active`, whichs controls whether or not the menu is expanded.
 This is typically used together with a router to open the menu with the active state.
 
-### lte-treeview-toggle
+### lte-treeview-title
 
 This directive should be applied to the link that controls the treeview. By default, the directive displays a caret
 as the handle for the menu. However, if the directive has any content, then the content will be transcluded in place
@@ -17,10 +17,10 @@ The directive has the following settings:
 
 - `icon`
   _(Default: `none`)_ -
-  Sets the icon of the toggle. The directive supports fontawesome, glyphicon and ion icons.
+  Sets the icon of the title. The directive supports fontawesome, glyphicon and ion icons.
 - `header`
   _(Default: `none`)_ -
-  Sets the heading for the toggle.
+  Sets the heading for the title.
 
 ### lte-treeview-menu
 
@@ -31,7 +31,7 @@ can be open at the same time.
 
 ```html
 <li class="treeview" lte-treeview active="$state.includes('dashboard')">
-  <a ui-sref="dashboard.v1" lte-treeview-toggle icon="fa fa-diamond" header="Dashboard V1">
+  <a ui-sref="dashboard.v1" lte-treeview-title icon="fa fa-diamond" header="Dashboard V1">
     <span class="badge">5 new</span>
   </a>
   <ul lte-treeview-menu>

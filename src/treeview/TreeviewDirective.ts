@@ -1,4 +1,5 @@
 import {TreeviewMenuController} from './TreeviewMenuDirective';
+import {BodyController} from '../sidebar-toggle/BodyDirective';
 
 const ACTIVE_CLASS = 'active';
 
@@ -8,6 +9,7 @@ export class TreeviewController implements ng.IController, ng.IOnChanges, ng.IOn
     expanded: boolean = false;
     menu: TreeviewMenuController;
     parentTreeview: TreeviewController;
+    body: BodyController;
     childTreeviews: TreeviewController[] = [];
     $element: ng.IAugmentedJQuery;
 
@@ -42,12 +44,16 @@ export class TreeviewController implements ng.IController, ng.IOnChanges, ng.IOn
         }
     }
 
-    toggle() {
+    titleClicked() {
         if (this.expanded && this.menu) {
             this.collapse();
         } else {
             this.expand();
         }
+    }
+
+    navigate(): void {
+        this.body.contentClicked();
     }
 
     expand(): void {
@@ -111,6 +117,7 @@ export let TreeviewDirective: ng.IDirectiveFactory = function() {
         restrict: 'A',
         scope: {},
         require: {
+            body: '^^lteBody',
             parentTreeview: '?^^lteTreeview'
         },
         controller: TreeviewController,

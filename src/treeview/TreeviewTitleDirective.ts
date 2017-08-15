@@ -1,17 +1,17 @@
 import * as fs from 'fs';
 import {TreeviewController} from './TreeviewDirective';
 
-class TreeviewToggleController {
+class TreeviewTitleController {
 
 }
 
-export let TreeviewToggleDirective: ng.IDirectiveFactory = function() {
+export let TreeviewTitleDirective: ng.IDirectiveFactory = function() {
     let directive: ng.IDirective = {
         restrict: 'A',
         scope: {},
         transclude: true,
-        template: fs.readFileSync(__dirname + '/TreeviewToggleDirective.html', 'utf-8'),
-        controller: TreeviewToggleController,
+        template: fs.readFileSync(__dirname + '/TreeviewTitleDirective.html', 'utf-8'),
+        controller: TreeviewTitleController,
         controllerAs: '$ctrl',
         bindToController: {
             icon: '@',
@@ -23,16 +23,16 @@ export let TreeviewToggleDirective: ng.IDirectiveFactory = function() {
                 element.attr('href', '');
             }
 
-            function toggleTreeview(event: JQueryEventObject) {
+            function titleClicked(event: JQueryEventObject) {
                 scope.$apply(() => {
-                    treeviewController.toggle();
+                    treeviewController.titleClicked();
                 });
             };
 
-            element.on('click', toggleTreeview);
+            element.on('click', titleClicked);
 
             scope.$on('$destroy', () => {
-                element.off('click', toggleTreeview);
+                element.off('click', titleClicked);
             });
         }
     };
@@ -40,4 +40,4 @@ export let TreeviewToggleDirective: ng.IDirectiveFactory = function() {
     return directive;
 };
 
-TreeviewToggleDirective.$inject = [];
+TreeviewTitleDirective.$inject = [];
