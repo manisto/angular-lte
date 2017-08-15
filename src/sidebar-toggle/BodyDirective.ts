@@ -16,6 +16,8 @@ export class BodyController implements ng.IController {
         this.options = lteOptions;
     }
 
+    $onInit(): void {}
+
     toggleSidebar(): void {
         if (this.isSmall()) {
             this.$element.removeClass(sidebarCollapseClass);
