@@ -1,5 +1,3 @@
-import * as fs from 'fs';
-
 export let InfoBoxComponent:ng.IComponentOptions = {
     bindings: {
         type: '@',
@@ -7,5 +5,5 @@ export let InfoBoxComponent:ng.IComponentOptions = {
         text: '@',
         number: '<'
     },
-    template: fs.readFileSync(__dirname + '/InfoBoxComponent.html', 'utf-8')
+    templateUrl: 'angular-lte/components/InfoBoxComponent.html'
 };

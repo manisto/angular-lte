@@ -1,33 +1,38 @@
-let gulp = require('gulp');
-let browserify = require('browserify')
-let source = require('vinyl-source-stream');
-let tsify = require('tsify');
-let brfs = require('brfs');
-let buffer = require('vinyl-buffer');
-let sourcemaps = require('gulp-sourcemaps');
-let uglify = require('gulp-uglify');
+const gulp = require("gulp");
+const typescript = require("typescript");
+const rollup = require("rollup");
+const typescriptPlugin = require("rollup-plugin-typescript");
+const templateCache = require("gulp-angular-templatecache");
 
-const BUILD_DIR = 'dist';
+const BUILD_DIR = "dist";
 
-gulp.task('default', [], () => {
-    return browserify({
-        basedir: '.',
-        debug: true,
-        entries: ['index.ts'],
-        cache: {},
-        packageCache: {}
+gulp.task("default", ["typescript", "templates"]);
+
+gulp.task("typescript", [], () => {
+  return rollup
+    .rollup({
+      input: "./index.ts",
+      plugins: [typescriptPlugin({ typescript })]
     })
-    .plugin(tsify)
-    .transform(brfs)
-    .bundle()
-    .pipe(source('angular-lte.min.js'))
-    .pipe(buffer())
-    .pipe(sourcemaps.init({loadMaps: true}))
-    .pipe(uglify({
-        compress: {
-            drop_debugger: false
-        }
-    }))
-    .pipe(sourcemaps.write('.'))
+    .then(bundle => {
+      return bundle.write({
+        sourcemap: true,
+        file: "dist/angular-lte.min.js",
+        format: "umd",
+        name: "angular-lte"
+      });
+    });
+});
+
+gulp.task("templates", [], () => {
+  return gulp
+    .src("src/**/*.html")
+    .pipe(
+      templateCache({
+        root: "angular-lte",
+        module: "angular-lte",
+        moduleSystem: "iife"
+      })
+    )
     .pipe(gulp.dest(BUILD_DIR));
 });

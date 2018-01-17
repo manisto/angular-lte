@@ -1,5 +1,3 @@
-import * as fs from 'fs';
-
 export interface ToggleCollapsedEvent {
     $event: {
         collapsed: boolean;
@@ -76,6 +74,6 @@ export let BoxComponent: ng.IComponentOptions = {
         onRemoved: '&'
     },
     transclude: true,
-    template: fs.readFileSync(__dirname + '/BoxComponent.html', 'utf-8'),
+    templateUrl: 'angular-lte/box/BoxComponent.html',
     controller: BoxController
 };

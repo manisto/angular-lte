@@ -1,5 +1,3 @@
-import * as fs from 'fs';
-
 export let ProgressBoxComponent:ng.IComponentOptions = {
     bindings: {
         type: '@',
@@ -9,5 +7,5 @@ export let ProgressBoxComponent:ng.IComponentOptions = {
         progress: '<',
         description: '@'
     },
-    template: fs.readFileSync(__dirname + '/ProgressBoxComponent.html', 'utf-8')
+    templateUrl: 'angular-lte/components/ProgressBoxComponent.html'
 };

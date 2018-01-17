@@ -1,4 +1,3 @@
-import * as fs from 'fs';
 import { BodyController } from './BodyDirective';
 
 const sidebarCollapseClass = 'sidebar-collapse';
@@ -26,6 +25,6 @@ export let SidebarToggleComponent: ng.IComponentOptions = {
     bindings: {
         screenReaderHint: '@'
     },
-    template: fs.readFileSync(__dirname + '/SidebarToggleComponent.html', 'utf-8'),
+    templateUrl: 'angular-lte/sidebar-toggle/SidebarToggleComponent.html',
     controller: SidebarToggleController
 };

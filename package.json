@@ -1,5 +1,5 @@
 {
-  "name": "@odense/angular-lte",
+  "name": "angular-lte",
   "version": "0.2.0",
   "description": "AngularJS bindings for the admin-lte bootstrap theme.",
   "main": "index.ts",
@@ -14,9 +14,6 @@
     "admin-lte",
     "bootstrap"
   ],
-  "publishConfig": {
-    "registry": "https://nexus.odknet.dk/repository/npm-hosted/"
-  },
   "author": "Gert Peter Brigsted <manisto@manisto.dk>",
   "license": "ISC",
   "dependencies": {
@@ -31,16 +28,13 @@
     "@types/angular": "^1.6.36",
     "@types/angular-animate": "^1.5.8",
     "@types/angular-ui-bootstrap": "^0.13.46",
-    "@types/node": "^7.0.46",
-    "brfs": "^1.4.3",
-    "browserify": "^14.5.0",
+    "@types/gulp": "^4.0.5",
+    "@types/node": "^7.0.52",
     "gulp": "^3.9.1",
-    "gulp-sourcemaps": "^2.6.1",
-    "gulp-uglify": "^3.0.0",
+    "gulp-angular-templatecache": "^2.2.0",
     "lite-server": "^2.3.0",
-    "tsify": "^3.0.3",
-    "typescript": "^2.5.3",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
+    "rollup": "^0.53.4",
+    "rollup-plugin-typescript": "^0.8.1",
+    "typescript": "^2.5.3"
   }
 }

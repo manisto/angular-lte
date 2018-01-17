@@ -1,4 +1,3 @@
-import * as fs from 'fs';
 import {TreeviewController} from './TreeviewDirective';
 
 class TreeviewTitleController {
@@ -10,7 +9,7 @@ export let TreeviewTitleDirective: ng.IDirectiveFactory = function() {
         restrict: 'A',
         scope: {},
         transclude: true,
-        template: fs.readFileSync(__dirname + '/TreeviewTitleDirective.html', 'utf-8'),
+        templateUrl: 'angular-lte/treeview/TreeviewTitleDirective.html',
         controller: TreeviewTitleController,
         controllerAs: '$ctrl',
         bindToController: {
