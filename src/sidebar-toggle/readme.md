@@ -10,7 +10,7 @@ The **content-wrapper** directive registers clicks on the content area and close
 
 ### lte-sidebar-toggle settings
 
-- `screen-reader-hint`
+* `screen-reader-hint`
   _(Default: `Toggle navigation`)_ -
   Sets the hint provided to screen readers.
 

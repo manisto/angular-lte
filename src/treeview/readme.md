@@ -15,10 +15,10 @@ of the caret handle. This can be useful for things such as labels or custom hand
 
 The directive has the following settings:
 
-- `icon`
+* `icon`
   _(Default: `none`)_ -
   Sets the icon of the title. The directive supports fontawesome, glyphicon and ion icons.
-- `header`
+* `header`
   _(Default: `none`)_ -
   Sets the heading for the title.
 
