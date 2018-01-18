@@ -1,4 +1,4 @@
-import { BodyController } from "./BodyDirective";
+import { BodyController } from "./body.directive";
 
 const sidebarCollapseClass = "sidebar-collapse";
 const sidebarOpenClass = "sidebar-open";
@@ -25,6 +25,6 @@ export let SidebarToggleComponent: ng.IComponentOptions = {
   bindings: {
     screenReaderHint: "@"
   },
-  templateUrl: "angular-lte/sidebar-toggle/SidebarToggleComponent.html",
+  templateUrl: "angular-lte/sidebar-toggle/sidebar-toggle.html",
   controller: SidebarToggleController
 };

@@ -1,6 +1,6 @@
-import { BodyDirective } from "./BodyDirective";
-import { SidebarToggleComponent } from "./SidebarToggleComponent";
-import { ContentWrapperDirective } from "./ContentWrapper";
+import { BodyDirective } from "./body.directive";
+import { SidebarToggleComponent } from "./sidebar-toggle.component";
+import { ContentWrapperDirective } from "./content-wrapper.directive";
 
 export let sidebarToggleModule = angular.module(
   "angular-lte.sidebar-toggle",

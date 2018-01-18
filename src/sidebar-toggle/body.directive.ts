@@ -1,4 +1,4 @@
-import { IOptions } from "../Options";
+import { IOptions } from "../options";
 
 const sidebarCollapseClass = "sidebar-collapse";
 const sidebarOpenClass = "sidebar-open";

@@ -1,4 +1,4 @@
-import { WrapperDirective } from "./WrapperDirective";
+import { WrapperDirective } from "./wrapper.directive";
 
 export let wrapperModule = angular.module("angular-lte.wrapper", []);
 

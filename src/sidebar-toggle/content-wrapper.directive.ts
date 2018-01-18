@@ -1,11 +1,11 @@
-import { BodyController } from "./BodyDirective";
+import { BodyController } from "./body.directive";
 
-export let ContentWrapperDirective: ng.IDirectiveFactory = function() {
+export let ContentWrapperDirective: ng.IDirectiveFactory = function () {
   let directive: ng.IDirective = {
     restrict: "A",
     scope: {},
     require: "^^lteBody",
-    link: function($scope, $element, attributes, body: BodyController) {
+    link: function ($scope, $element, attributes, body: BodyController) {
       function handleClick() {
         body.contentClicked();
       }
