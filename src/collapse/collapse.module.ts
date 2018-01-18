@@ -1,4 +1,4 @@
-import { CollapseDirective } from "./CollapseDirective";
+import { CollapseDirective } from "./collapse.directive";
 
 export let collapseModule = angular.module("angular-lte.collapse", []);
 

@@ -5,5 +5,5 @@ export let InfoBoxComponent: ng.IComponentOptions = {
     text: "@",
     number: "<"
   },
-  templateUrl: "angular-lte/components/InfoBoxComponent.html"
+  templateUrl: "angular-lte/components/info-box.html"
 };

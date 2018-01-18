@@ -7,5 +7,5 @@ export let ProgressBoxComponent: ng.IComponentOptions = {
     progress: "<",
     description: "@"
   },
-  templateUrl: "angular-lte/components/ProgressBoxComponent.html"
+  templateUrl: "angular-lte/components/progress-box.html"
 };

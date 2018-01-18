@@ -4,5 +4,5 @@ export let CalloutComponent: ng.IComponentOptions = {
     title: "<"
   },
   transclude: true,
-  templateUrl: "angular-lte/components/CalloutComponent.html"
+  templateUrl: "angular-lte/components/callout.html"
 };

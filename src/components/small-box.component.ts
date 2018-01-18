@@ -11,5 +11,5 @@ export let SmallBoxComponent: ng.IComponentOptions = {
     title: "?boxTitle",
     text: "?boxText"
   },
-  templateUrl: "angular-lte/components/SmallBoxComponent.html"
+  templateUrl: "angular-lte/components/small-box.html"
 };
