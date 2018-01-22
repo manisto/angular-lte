@@ -7,7 +7,7 @@ export let TreeviewTitleDirective: ng.IDirectiveFactory = function() {
     restrict: "A",
     scope: {},
     transclude: true,
-    templateUrl: "angular-lte/treeview/TreeviewTitleDirective.html",
+    templateUrl: "angular-lte/treeview/treeview-title.html",
     controller: TreeviewTitleController,
     controllerAs: "$ctrl",
     bindToController: {
