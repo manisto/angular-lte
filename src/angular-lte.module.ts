@@ -5,7 +5,7 @@ import { wrapperModule } from "./wrapper/wrapper.module";
 import { componentsModule } from "./components/components.module";
 import { collapseModule } from "./collapse/collapse.module";
 
-import { Options } from "./Options";
+import { Options } from "./options";
 
 export let angularLteModule = angular.module("angular-lte", [
   boxModule.name,

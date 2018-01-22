@@ -1,19 +1,14 @@
 {
-  "name": "angular-lte",
-  "version": "0.2.0",
+  "name": "angularjs-admin-lte",
+  "version": "0.3.0",
   "description": "AngularJS bindings for the admin-lte bootstrap theme.",
   "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "gulp",
     "start": "lite-server",
     "prepublishOnly": "gulp"
   },
-  "keywords": [
-    "angularjs",
-    "admin-lte",
-    "bootstrap"
-  ],
+  "keywords": ["angularjs", "admin-lte", "bootstrap"],
   "author": "Gert Peter Brigsted <manisto@manisto.dk>",
   "license": "ISC",
   "dependencies": {
