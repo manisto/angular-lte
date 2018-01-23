@@ -8,7 +8,11 @@
     "start": "lite-server",
     "prepublishOnly": "gulp"
   },
-  "keywords": ["angularjs", "admin-lte", "bootstrap"],
+  "keywords": [
+    "angularjs",
+    "admin-lte",
+    "bootstrap"
+  ],
   "author": "Gert Peter Brigsted <manisto@manisto.dk>",
   "license": "ISC",
   "dependencies": {
