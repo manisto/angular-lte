@@ -1,4 +1,4 @@
-import { TreeviewController } from "./TreeviewDirective";
+import { TreeviewController } from "./treeview.directive";
 
 class TreeviewTitleController {}
 

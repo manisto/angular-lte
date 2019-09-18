@@ -1,4 +1,4 @@
-import { TreeviewMenuController } from "./TreeviewMenuDirective";
+import { TreeviewMenuController } from "./treeview-menu.directive";
 
 const ACTIVE_CLASS = "active";
 
